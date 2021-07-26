@@ -19,7 +19,7 @@
                                 type="password"
                                 id="password"
                                 class="form-control"
-                                v-model="fuserData.password">
+                                v-model.lazy="fuserData.password">
                     </div>
                     <div class="form-group">
                         <label for="age">Age</label>
@@ -39,7 +39,8 @@
                     <textarea
                             id="message"
                             rows="5"
-                            class="form-control">
+                            class="form-control"
+                            v-model="message">
                     </textarea>
                 </div>
             </div>
@@ -50,13 +51,15 @@
                             <input
                                     type="checkbox"
                                     id="sendmail"
-                                    value="SendMail"> Send Mail
+                                    value="SendMail"
+                                    v-model="sendMail"> Send Mail
                         </label>
                         <label for="sendInfomail">
                             <input
                                     type="checkbox"
                                     id="sendInfomail"
-                                    value="SendInfoMail"> Send Infomail
+                                    value="SendInfoMail"
+                                    v-model="sendMail"> Send Infomail
                         </label>
                     </div>
 
@@ -68,13 +71,15 @@
                         <input
                                 type="radio"
                                 id="male"
-                                value="Male"> Male
+                                value="Male"
+                                v-model="gender"> Male
                     </label>
                     <label for="female">
                         <input
                                 type="radio"
                                 id="female"
-                                value="Female"> Female
+                                value="Female"
+                                v-model="gender"> Female
                     </label>
                 </div>
             </div>
@@ -108,12 +113,14 @@
                         <p>Mail: {{fuserData.email}}</p>
                         <p>Password: {{fuserData.password}}</p>
                         <p>Age: {{fuserData.age}}</p>
-                        <p>Message: </p>
+                        <p style="white-space: pre-line;">Message: {{message}}</p>
                         <p><strong>Send Mail?</strong></p>
                         <ul>
-                            <li></li>
+                            <li v-for="mail in sendMail" :key="mail">
+                                {{mail}}
+                            </li>
                         </ul>
-                        <p>Gender:</p>
+                        <p>Gender: {{gender}}</p>
                         <p>Priority:</p>
                         <p>Switched:</p>
                     </div>
@@ -131,12 +138,17 @@
                     email: '',
                     password: '',
                     age: 0
-                }
+                },
+                message:'',
+                sendMail: [],
+                gender: 'Male'
             }
         }
     }
 </script>
 
 <style>
- 
+  ul li{
+      list-style-type: none;
+  }
 </style>
