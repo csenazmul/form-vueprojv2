@@ -15,6 +15,11 @@
         <!-- assign modifers -->
         <div v-awesome.red.big="'Hello Nazmul'"></div>
         <div v-awesome.green.small="'Hello Ruksi'"></div>
+        <hr>
+        <!-- Custom Directive- Local -->
+        <!-- <div v-user></div> -->
+        <div v-user="userValue"></div>
+
     </div>
 </template>
 
@@ -26,13 +31,24 @@ import compContact from './Components/Contact'
 export default {
     data(){
         return{
-            componentToRender: 'compContact'
+            componentToRender: 'compContact',
+            userValue: "Frankey"
         }
     },
     components:{
         compHome,
         compAbout,
         compContact
+    },
+    // Custom Directive- Local 
+    // Properties
+    directives: {
+        'user':{
+            bind(el,binding){
+                el.innerHTML = binding.value
+                el.style.color = 'Red'
+            }
         }
+    }
 }
 </script>
