@@ -20,6 +20,13 @@
         <!-- <div v-user></div> -->
         <div v-user="userValue"></div>
 
+        <!-- Transition-38 -->
+        <transition name="appear">
+            <div class="p-3 mb-2 bg-success text-white" v-if="display">How Are you?</div>
+        </transition>
+        
+        <button @click="display=!display" class="btn btn-secondary">Toggle</button>
+
     </div>
 </template>
 
@@ -32,7 +39,8 @@ export default {
     data(){
         return{
             componentToRender: 'compContact',
-            userValue: "Frankey"
+            userValue: "Frankey",
+            display: true
         }
     },
     components:{
@@ -52,3 +60,19 @@ export default {
     }
 }
 </script>
+
+<style>
+    .appear-enter{
+        opacity: 0;
+    }
+    .appear-enter-active{
+        transition: opacity 3s;
+    }
+    .appear-leave{
+
+    }
+    .appear-leave-active{
+        opacity: 0;
+        transition: opacity 3s;
+    }
+</style>
