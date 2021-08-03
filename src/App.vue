@@ -3,6 +3,7 @@
         <button @click="componentToRender='compHome'" class="btn btn-primary">Home</button>
         <button @click="componentToRender='compAbout'" class="btn btn-primary">About</button>
         <button @click="componentToRender='compContact'" class="btn btn-primary">Contact</button>
+        <button @click="componentToRender='compAnimation'" class="btn btn-primary">Animation</button>
 
         <keep-alive>
             <component :is="componentToRender"></component>
@@ -35,6 +36,7 @@
 import compHome from './Components/Home'
 import compAbout from './Components/About'
 import compContact from './Components/Contact'
+import compAnimation from './Components/Animation'
 export default {
     data(){
         return{
@@ -46,7 +48,8 @@ export default {
     components:{
         compHome,
         compAbout,
-        compContact
+        compContact,
+        compAnimation
     },
     // Custom Directive- Local 
     // Properties
